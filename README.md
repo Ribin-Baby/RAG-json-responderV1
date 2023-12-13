@@ -1,6 +1,13 @@
 # RAG Structured Output Generation ChatBot
+<p align="center">
+<img height="62" width="62" src="https://skillicons.dev/icons?i=python"/>
+ <img height="62" width="62" src="https://skillicons.dev/icons?i=pytorch"/>
+<img height="62" width="62" src="https://huggingface.co/front/assets/huggingface_logo.svg"/>
+<img height="62" width="62" src="https://integrations.langchain.com/favicon.ico"/>
+<img height="62" width="62" src="https://cdn.discordapp.com/icons/1130134702557249637/72dcf8a26e2efb0e2a3679ea70c430bd.webp"/>
+</p>
 
-## Problem Statement:
+## ❓ Problem Statement:
 
 1. **Large Language Models (LLMs):** Utilize quantized versions of LLMs like llama2, open-llama, or falcon that can run on Google Colab.
 2. **Fine-tuning/Prompt Engineering:**
@@ -29,7 +36,11 @@
 - The system should be lightweight and run efficiently on Google Colab.
 
 
-## Model We Use:
+## **🔍**  Model Used:
+<div align="center">
+  <img src="https://github.com/imoneoi/openchat/raw/master/assets/logo_new.png" style="width: 65%">
+</div>
+
 * We are using GPTQ quantized version of [  openchat_3.5](https://huggingface.co/TheBloke/openchat_3.5-GPTQ) model, by "[TheBloke](https://huggingface.co/TheBloke)".
 	* GPTQ is a post-training quantization (PTQ) method for 4-bit quantization.
 * The original [openchat_3.5](https://huggingface.co/openchat/openchat_3.5) model itself is a fine-tuned [Mistral](https://mistral.ai/) Model.
@@ -52,7 +63,7 @@
 |                    |          |          | WizardLM 70B | Orca 13B | Orca 13B | Platypus2 70B | WizardLM 70B | WizardCoder 34B | Flan-T5 11B | MetaMath 70B |
 
 <!-- requirements start -->
-### Requirements
+###  **💻** Requirements
 1. **System Requirements**
 ```python
 ~ 6GB of system RAM
