@@ -288,14 +288,5 @@ pip install requirements.txt
 python bot.py --s "["News", "Weather"]"
 ```
 
-## 💐 Citation
 
-```
-@article{wang2023openchat,
-  title={OpenChat: Advancing Open-source Language Models with Mixed-Quality Data},
-  author={Wang, Guan and Cheng, Sijie and Zhan, Xianyuan and Li, Xiangang and Song, Sen and Liu, Yang},
-  journal={arXiv preprint arXiv:2309.11235},
-  year={2023}
-}
-```
 ### 👍 The END
