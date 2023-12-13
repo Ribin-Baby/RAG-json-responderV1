@@ -160,9 +160,9 @@ pip install transformers==4.35.2
 
 2.  **Conversation-Flow Chart:**
  <div  align="center">
-<img  src="https://github.com/Ribin-Baby/RAG-json-responderV1/blob/main/images/RAG_jsonout.drawio.png"  style="width: 80%">
+<img  src="https://github.com/Ribin-Baby/RAG-json-responderV1/blob/main/images/RAG_jsonout.svg"  style="width: 90%">
 <br>
-<figcaption><i>Fig.2 - conversation flowchart for BOT interaction</i></figcaption>
+<figcaption><i>Fig.2 - conversation flowchart of BOT interaction</i></figcaption>
 </div>
 	
 - This section describes the process of handling user input and generating structured output.
@@ -170,9 +170,15 @@ pip install transformers==4.35.2
 	**I] User Input and Prompt:**
 
 	-   When the bot receives user input, it is combined with a specific prompt.
+
 	-   This prompt instructs the LLM to generate a structured output.
     - For example if the user input is : `USER: what is the weather in Chennai?`
-    - The prompt along with the user input will be :
+	**Prompt template: OpenChat**
+		```
+		GPT4 Correct User: {prompt}<|end_of_turn|>GPT4 Correct Assistant:
+		```
+
+  - The `{prompt}` along with the user input will be :
 	```bash
 	GPT4 Correct User: As an Named Entity Recognition and Intent Classification Expert, your task is to analyze questions like the following '###user_input': 
 	###user_input: what is the weather in Chennai? 
@@ -201,9 +207,6 @@ pip install transformers==4.35.2
 		- This iterative process will help to filter out some rare glitch in LLM output.
 	- **checking for missing key values:**
 		- Following the generation of well-structured JSON data by the LLM, an additional validation step is performed. This step focuses on ensuring that the essential keys, "service" and "location," contain valid non-null values.
-
-			
-
 		-  **Service Key:** The value of the "service" key is checked for null or emptiness.
 		-  **Location Key:** Similarly, the value of the "location" key is checked for null or emptiness.
 
@@ -226,16 +229,38 @@ pip install transformers==4.35.2
 		-  The combined user input (including service and location information) is again passed to the LLM with the specific prompt for structured output generation.
 		-  The validation and follow-up questioning steps repeat as needed until all essential key-value pairs are obtained and a valid structured output is generated.
 
-	- **This iterative approach guarantees that the bot receives a complete and accurate JSON response, even if the user initially forgets to provide all necessary information.**
+	- **This iterative approach guarantees that the bot generate a complete and accurate JSON response all the time, even if the user initially forgets to provide all necessary information.**
 
+
+3. **User interactions:**
+	
+	-  Direct query:-
+	<div  align="center">
+	<img  src="https://github.com/Ribin-Baby/RAG-json-responderV1/blob/main/images/direct_chat1.png"  style="width: 90%">
+	<br>
+	<img  src="https://github.com/Ribin-Baby/RAG-json-responderV1/blob/main/images/direct_chat2.png"  style="width: 90%">
+	<br>
+	<figcaption><i>Fig.3 - user directly asking the complete query in the first try itself</i></figcaption>
+	</div>
+
+	- conversation with follow-up questioning  when `service` information is missing:-
+	<div  align="center">
+	<img  src="https://github.com/Ribin-Baby/RAG-json-responderV1/blob/main/images/chat_with_service_followup.png"  style="width: 90%">
+	<br>
+	<figcaption><i>Fig.4 - user gives query without specifying the service they need</i></figcaption>
+	</div>
+-  conversation with follow-up questioning  when `location` information is missing:-
+	<div  align="center">
+	<img  src="https://github.com/Ribin-Baby/RAG-json-responderV1/blob/main/images/chat_with_loc_followup.png"  style="width: 90%">
+	<br>
+	<figcaption><i>Fig.4 - user gives query without specifying the location  details</i></figcaption>
+	</div>
+- conversation with follow-up questioning  when both `location` & `service` informations are missing:-
+	<div  align="center">
+	<img  src="https://github.com/Ribin-Baby/RAG-json-responderV1/blob/main/images/usual_chat.png"  style="width: 90%">
+	<br>
+	<figcaption><i>Fig.4 - user starts the conversation with a greeting only</i></figcaption>
+	</div>
 <!-- details  end-->
+
   
-
-<!-- prompt-template start -->
-**Prompt template: OpenChat**
-```
-
-GPT4 User: {prompt}<|end_of_turn|>GPT4 Assistant:
-
-```
-<!-- prompt-template end -->
