@@ -278,12 +278,12 @@ git clone https://github.com/Ribin-Baby/RAG-json-responderV1.git
 cd ./RAG-json-responderV1
 ```
 - install requirements
-	- > [!NOTE]
-		> Need GPU with 6GB VRAM and cuda 11.8. Better run on colab with T4 GPU.
 ```bash
 pip install requirements.txt
 ```
 - 💥 Run
+> [!NOTE]
+> Need GPU with 6GB VRAM and cuda 11.8. Better run on colab with T4 GPU.
 ```python
 python bot.py --s "["News", "Weather"]"
 ```
