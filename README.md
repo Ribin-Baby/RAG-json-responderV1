@@ -77,7 +77,7 @@
 
   
   
-### <a id="benchmarks"></a> Model Benchmarks:
+### 🏷️ <a id="benchmarks"></a> Model Benchmarks:
 
 | Model              | # Params | Average  | MT-Bench     | AGIEval  | BBH MC   | TruthfulQA    | MMLU         | HumanEval       | BBH CoT     | GSM8K        |
 |--------------------|----------|----------|--------------|----------|----------|---------------|--------------|-----------------|-------------|--------------|
@@ -99,14 +99,15 @@
 ~ 6GB of system RAM
 
 ~ 6GB of GPU VRAM
-
-#NOTE: GPU is madatory for running the inference
-#TESTED, succesfully on google colab with T4 GPU enabled.
 ```
+
+> [!IMPORTANT]
+> 📌 A GPU of 6GB VRAM is madatory for running the inference. Will works fine on google colab with T4 GPU enabled.
+
  <div  align="center">
 <img  src="https://github.com/Ribin-Baby/RAG-json-responderV1/blob/main/images/system_usage.png"  style="width: 60%">
 <br>
-<figcaption><i>Fig.1 - Resource usage in google collab notebook environment with T4 GPU</i></figcaption>
+<figcaption><i>Fig.1 - Resource usage in google colab notebook environment with T4 GPU</i></figcaption>
 </div>
 
 2.  **Software Requirements**
@@ -115,7 +116,7 @@
 
 	*  **CUDA-version**: `11.8`
 
-**python packages**
+⬇️ **python packages**
 
 ```python
 
@@ -145,7 +146,7 @@ pip install transformers==4.35.2
   <!-- details start -->
 
 ## 🌟. **📖** `Explained`:
-  1. **Tools used:**
+  1. 🛠️ **Tools used:**
   <p  align="center">
 <img  height="62"  width="62"  src="https://skillicons.dev/icons?i=python"/>
 <img  height="62"  width="62"  src="https://skillicons.dev/icons?i=pytorch"/>
@@ -158,9 +159,10 @@ pip install transformers==4.35.2
 - *`auto-gptq`*: "for working with quantized models."
 - *`langchain`*: 🦜🔗 "for  advanced  prompting."
 
-2.  **Conversation-Flow Chart:**
+2.  **💬** **Conversation-Flow Chart:**
  <div  align="center">
-<img  src="https://github.com/Ribin-Baby/RAG-json-responderV1/blob/main/images/RAG_jsonout.svg"  style="width: 90%">
+<a href="https://github.com/Ribin-Baby/RAG-json-responderV1/blob/main/images/RAG_jsonout.drawio.png">
+<img  src="https://github.com/Ribin-Baby/RAG-json-responderV1/blob/main/images/RAG_jsonout.svg"  style="width: 90%"></a>
 <br>
 <figcaption><i>Fig.2 - conversation flowchart of BOT interaction</i></figcaption>
 </div>
@@ -173,7 +175,7 @@ pip install transformers==4.35.2
 
 	-   This prompt instructs the LLM to generate a structured output.
     - For example if the user input is : `USER: what is the weather in Chennai?`
-	**Prompt template: OpenChat**
+	**📚** **Prompt template: OpenChat**
 		```
 		GPT4 Correct User: {prompt}<|end_of_turn|>GPT4 Correct Assistant:
 		```
@@ -195,11 +197,11 @@ pip install transformers==4.35.2
 	- We can dynamically pass the required services here it is `['Weather', 'News']`.
 
 	 
-	**II] LLM Output Generation:**
+	**II] LLM Output Generation:** **🤖**
 	-   The combined user input and prompt are passed to the LLM for processing.
 	-   The LLM attempts to generate structured output, aiming for JSON format.
 
-	**III]  Output Validation:**
+	**III]  Output Validation:**  **👀**
 	-	**checking for structured output format:**
 		- If the output is not in JSON format an iterative process begins.
 		- The user input is passed again to the LLM with the same prompt.
@@ -210,29 +212,29 @@ pip install transformers==4.35.2
 		-  **Service Key:** The value of the "service" key is checked for null or emptiness.
 		-  **Location Key:** Similarly, the value of the "location" key is checked for null or emptiness.
 
-	- **Follow-up Questioning:**
+	- **🧑‍⚕️** **Follow-up Questioning:** 
 
 		If either key (service or location) lacks a valid value:
-		- **Service**
+		- **⚙️** **Service**
 		    -   The bot initiates a follow-up questioning flow specifically designed to elicit the missing service information from the user.
 		    -   This may involve asking the user directly what service they are seeking information about.
     
-		- **Location**
+		- **📍** **Location**
     
 		    -   A similar follow-up questioning flow is initiated if the "location" key lacks a valid value.
 		    -   The bot prompts the user for the desired location information.
     
 
-	- **Resuming the Process:**
+	- **🚦** **Resuming the Process:**
 
 		- Once the user provides the missing information, the original process resumes.
 		-  The combined user input (including service and location information) is again passed to the LLM with the specific prompt for structured output generation.
 		-  The validation and follow-up questioning steps repeat as needed until all essential key-value pairs are obtained and a valid structured output is generated.
 
-	- **This iterative approach guarantees that the bot generate a complete and accurate JSON response all the time, even if the user initially forgets to provide all necessary information.**
+	- 🔥**This iterative approach guarantees that the bot generate a complete and accurate JSON response all the time, even if the user initially forgets to provide all necessary information.**
 
 
-3. **User interactions:**
+3. ⚡**User interactions:** ⚡
 	
 	-  Direct query:-
 	<div  align="center">
@@ -242,25 +244,58 @@ pip install transformers==4.35.2
 	<br>
 	<figcaption><i>Fig.3 - user directly asking the complete query in the first try itself</i></figcaption>
 	</div>
-
-	- conversation with follow-up questioning  when `service` information is missing:-
+---	
+- conversation with follow-up questioning  when `service` information is missing:-
 	<div  align="center">
 	<img  src="https://github.com/Ribin-Baby/RAG-json-responderV1/blob/main/images/chat_with_service_followup.png"  style="width: 90%">
 	<br>
 	<figcaption><i>Fig.4 - user gives query without specifying the service they need</i></figcaption>
 	</div>
+---
 -  conversation with follow-up questioning  when `location` information is missing:-
 	<div  align="center">
 	<img  src="https://github.com/Ribin-Baby/RAG-json-responderV1/blob/main/images/chat_with_loc_followup.png"  style="width: 90%">
 	<br>
-	<figcaption><i>Fig.4 - user gives query without specifying the location  details</i></figcaption>
+	<figcaption><i>Fig.5 - user gives query without specifying the location  details</i></figcaption>
 	</div>
+---
 - conversation with follow-up questioning  when both `location` & `service` informations are missing:-
 	<div  align="center">
 	<img  src="https://github.com/Ribin-Baby/RAG-json-responderV1/blob/main/images/usual_chat.png"  style="width: 90%">
 	<br>
-	<figcaption><i>Fig.4 - user starts the conversation with a greeting only</i></figcaption>
+	<figcaption><i>Fig.6 - user starts the conversation with a greeting only</i></figcaption>
 	</div>
+---
 <!-- details  end-->
 
-  
+## 🌟.  **🚀** Hands oN:
+-    clone repo
+```bash
+git clone https://github.com/Ribin-Baby/RAG-json-responderV1.git
+```
+- change directory
+```bash
+cd ./RAG-json-responderV1
+```
+- install requirements
+	- > [!NOTE]
+		> Need GPU with 6GB VRAM and cuda 11.8. Better run on colab with T4 GPU.
+```bash
+pip install requirements.txt
+```
+- 💥 Run
+```python
+python bot.py --s "["News", "Weather"]"
+```
+
+## 💐 Citation
+
+```
+@article{wang2023openchat,
+  title={OpenChat: Advancing Open-source Language Models with Mixed-Quality Data},
+  author={Wang, Guan and Cheng, Sijie and Zhan, Xianyuan and Li, Xiangang and Song, Sen and Liu, Yang},
+  journal={arXiv preprint arXiv:2309.11235},
+  year={2023}
+}
+```
+### 👍 The END
