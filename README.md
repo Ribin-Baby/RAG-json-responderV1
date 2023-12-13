@@ -1,16 +1,7 @@
 
 # RAG Structured Output Generation ChatBot
 
-<p  align="center">
-<img  height="62"  width="62"  src="https://skillicons.dev/icons?i=python"/>
-<img  height="62"  width="62"  src="https://skillicons.dev/icons?i=pytorch"/>
-<img  height="62"  width="62"  src="https://huggingface.co/front/assets/huggingface_logo.svg"/>
-<img  height="62"  width="62"  src="https://integrations.langchain.com/favicon.ico"/>
-<img  height="62"  width="62"  src="https://cdn.discordapp.com/icons/1130134702557249637/72dcf8a26e2efb0e2a3679ea70c430bd.webp"/>
-</p>
-
-
-## ❓ Problem Statement:
+##  🌟.❓ Problem Statement:
 
   
 1.  **Large Language Models (LLMs):** Utilize quantized versions of LLMs like llama2, open-llama, or falcon that can run on Google Colab.
@@ -61,7 +52,7 @@
 
   
  
-## **🔍** Model Used:
+## 🌟. **🔍** Model Used:
 
 <div  align="center">
 <img  src="https://github.com/imoneoi/openchat/raw/master/assets/logo_new.png"  style="width: 60%">
@@ -97,7 +88,7 @@
 
 <!-- requirements start -->
 
-## **💻** Requirements
+## 🌟. **💻** Requirements
 
 1.  **System Requirements**
 
@@ -110,17 +101,16 @@
 #NOTE: GPU is madatory for running the inference
 #TESTED, succesfully on google colab with T4 GPU enabled.
 ```
-
- **USAGE:**
  <div  align="center">
 <img  src="https://github.com/Ribin-Baby/RAG-json-responderV1/blob/main/images/system_usage.png"  style="width: 60%">
+<figcaption><i>Fig.1 - Resource usage in google collab notebook environment with T4 GPU</i></figcaption>
 </div>
 
 2.  **Software Requirements**
 
-*  **python-version**: `3.10`
+	*  **python-version**: `3.10`
 
-*  **CUDA-version**: `11.8`
+	*  **CUDA-version**: `11.8`
 
 **python packages**
 
@@ -150,12 +140,28 @@ pip install transformers==4.35.2
 <!-- requirements end -->
 
   <!-- details start -->
-  ## `Code` Explained:
+
+## 🌟. **📖** `Explained`:
   1. **Tools used:**
-	  - *`transformers`*: "for importing and using LLM model."
-	  - *`auto-gptq`*: "for working with quantized models."
-	  - *`langchain`*: "for advanced prompting."
-2. 
+  <p  align="center">
+<img  height="62"  width="62"  src="https://skillicons.dev/icons?i=python"/>
+<img  height="62"  width="62"  src="https://skillicons.dev/icons?i=pytorch"/>
+<img  height="62"  width="62"  src="https://huggingface.co/front/assets/huggingface_logo.svg"/>
+<img  height="62"  width="62"  src="https://integrations.langchain.com/favicon.ico"/>
+<img  height="62"  width="62"  src="https://cdn.discordapp.com/icons/1130134702557249637/72dcf8a26e2efb0e2a3679ea70c430bd.webp"/>
+</p>
+
+- *`transformers`*: "for importing and using LLM model from 🤗Huggingface."
+- *`auto-gptq`*: "for working with quantized models."
+- *`langchain`*: " for 🦜🔗 advanced  prompting."
+
+2.  **Conversation-Flow Chart:**
+ <div  align="center">
+<img  src="https://github.com/Ribin-Baby/RAG-json-responderV1/blob/main/images/RAG_jsonout.drawio.png"  style="width: 60%">
+<figcaption><i>Fig.2 - conversation flowchart for BOT interaction</i></figcaption>
+</div>
+	
+-  
   <!-- details  end-->
   
 
