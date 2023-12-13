@@ -47,7 +47,7 @@
 	* **🔥 The first 7B model Achieves Comparable Results with ChatGPT (March)! 🔥**
 	* **🤖 Open-source model on MT-bench scoring 7.81, outperforming 70B models 🤖**
 	
-* The original *openchat_3.5* model can runs on systems can run on a consumer GPU with 24GB RAM, but the quantized version consumes ~**6GB RAM** only.
+* The original *openchat_3.5* model can runs on consumer GPU with 24GB RAM, but the quantized version consumes ~**6GB VRAM GPU** only.
 
 * This is a `4 bit` quantized, `7 Billion Parameter` model, with a `sequence length of 4096`.
 
