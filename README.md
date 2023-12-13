@@ -175,7 +175,8 @@ pip install transformers==4.35.2
 
 	-   This prompt instructs the LLM to generate a structured output.
     - For example if the user input is : `USER: what is the weather in Chennai?`
-	**📚** **Prompt template: OpenChat**
+	
+	- **📚** **Prompt template: OpenChat**
 		```
 		GPT4 Correct User: {prompt}<|end_of_turn|>GPT4 Correct Assistant:
 		```
