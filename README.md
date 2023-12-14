@@ -233,6 +233,7 @@ pip install transformers==4.35.2
 		-  The validation and follow-up questioning steps repeat as needed until all essential key-value pairs are obtained and a valid structured output is generated.
 
 	- 🔥**This iterative approach guarantees that the bot generate a complete and accurate JSON response all the time, even if the user initially forgets to provide all necessary information.**
+	- 🔥We also passing previous one chat history along with the user input in-order to direct the LLM to generate better quality results. 
 
 
 3. ⚡**User interactions:** ⚡
@@ -284,10 +285,10 @@ pip install requirements.txt
 ```
 - 💥 Run
 > [!NOTE]
-> Need GPU with 6GB VRAM and cuda 11.8. Better run on colab with T4 GPU.
+> Need GPU with 6GB VRAM and cuda 11.8 installed. Better run on colab with T4 GPU.
 ```python
-python bot.py --s "["News", "Weather"]"
+python bot.py --s '["News", "Weather"]'
 ```
-
+- not only *["News", "Weather"]* as services we can pass any services we need dynamically to *["Game", "Law"]* or *["Economics", "Law", "Weather"]* or any.
 
 ### 👍 The END
