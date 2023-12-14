@@ -44,8 +44,6 @@ cffi==1.16.0
 chardet==5.2.0
 charset-normalizer==3.3.2
 chex==0.1.7
-chroma-hnswlib==0.7.3
-chromadb==0.4.18
 clean-text==0.6.0
 click==8.1.7
 click-plugins==1.1.1
@@ -75,7 +73,6 @@ dataclasses-json==0.6.3
 datascience==0.17.6
 datasets==2.15.0
 db-dtypes==1.1.1
-dbus-python==1.2.18
 debugpy==1.6.6
 decorator==4.4.2
 defusedxml==0.7.1
@@ -84,7 +81,6 @@ dill==0.3.7
 diskcache==5.6.3
 distributed==2023.8.1
 distro==1.7.0
-dlib==19.24.2
 dm-tree==0.1.8
 docutils==0.18.1
 dopamine-rl==4.0.6
@@ -348,7 +344,6 @@ pyshp==2.3.1
 PySocks==1.7.1
 pytensor==2.14.2
 pytest==7.4.3
-python-apt==0.0.0
 python-box==7.1.1
 python-dateutil==2.8.2
 python-dotenv==1.0.0
