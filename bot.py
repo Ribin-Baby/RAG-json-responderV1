@@ -114,9 +114,9 @@ class Dialogflow:
   def inject_input(self, user_input):
     if self.llm_output != "":
         if self.llm_output.service_intent != "Other":
-          return f'{user_input} and Service: {self.llm_output.service_intent} is already given.'
+          return f'find location from `{user_input}`, and user is looking for service {self.llm_output.service_intent}.'
         elif self.llm_output.location != "Other":
-          return f'{user_input} and Location: {self.llm_output.location} is already given.'
+          return f'find service from `{user_input}`, and location is given as {self.llm_output.location}.'
     return user_input
 
   def llm_response(self, prompt, n=0):
