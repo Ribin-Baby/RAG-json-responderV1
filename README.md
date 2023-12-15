@@ -270,25 +270,51 @@ pip install transformers==4.35.2
 ---
 <!-- details  end-->
 
-## 🌟.  **🚀** Hands oN:
--    clone repo
+## 🌟. **🚀** Hands oN:
+### <u>CLI</u>
+- clone repo
+
 ```bash
-git clone https://github.com/Ribin-Baby/RAG-json-responderV1.git
+
+git  clone  https://github.com/Ribin-Baby/RAG-json-responderV1.git
+
 ```
+
 - change directory
+
 ```bash
-cd ./RAG-json-responderV1
+
+cd  ./RAG-json-responderV1
+
 ```
+
 - install requirements
+
 ```bash
-pip install -r requirements.txt
+
+pip  install  -r  requirements.txt
+
 ```
+
 - 💥 Run
+
 > [!NOTE]
+
 > Need GPU with 6GB VRAM and cuda 11.8 installed. Better run on colab with T4 GPU.
+
 ```python
+
 python bot.py --s '["News", "Weather"]'
+
 ```
+
 - not only *["News", "Weather"]* as services we can pass any services we need dynamically to *["Game", "Law"]* or *["Economics", "Law", "Weather"]* or any.
+
+### <u>UI</u>
+- open the `bot_notebook.ipynb` file in google colab environment and change the runtime to `GPU`. And run cell-by-cell.
+- It may be required to restart the colab after installing the packages. To do that run this cell below.
+	> import  IPython
+	> IPython.Application.instance().kernel.do_shutdown(True)
+ - upon running the last cell, you will get an interactive UI to chat with the BoT.
 
 ### 👍 The END
