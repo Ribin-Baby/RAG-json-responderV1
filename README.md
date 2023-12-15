@@ -295,7 +295,7 @@ python bot.py --s '["News", "Weather"]'
 ### <u>UI</u>
 - open the `bot_notebook.ipynb` file in google colab environment and change the runtime to `GPU`. And run cell-by-cell.
 - It may be required to restart the colab after installing the packages. To do that run this cell below.
-	> import  IPython
-	> IPython.Application.instance().kernel.do_shutdown(True)
+> import  IPython
+> IPython.Application.instance().kernel.do_shutdown(True)
  - upon running the last cell, you will get an interactive UI to chat with the BoT.
 ### 👍 The END
