@@ -93,7 +93,8 @@ class ServiceData(BaseModel):
     location: str = Field(description="This field stores the location value extracted from the user input.")    
 
 
-class Dialogflow:
+class DialogflowCli:
+  '''CLI interaction tool'''
   def __init__(self, llm, prompt_template, parser, n, services:list):
     self.n = n # max retry
     self.llm = llm
@@ -103,13 +104,19 @@ class Dialogflow:
     self.user_input = ""
     self.llm_output = ""
     self.History = {"chat1":None, "chat2":None}
+    self.lock = False # For follow-up loop
 
   def taking_input(self):
     self.user_input = input("USER: ")
-    return True
+    # self.print_output("USER : ", self.user_input)
+    if self.lock:
+      response = self.chat(self.user_input, lock=self.lock)
+    else:
+      response = self.chat(self.user_input, lock=False)
+    return response
 
-  def print_output(self, text):
-    print("BOT:",text)
+  def print_output(self, tag, text):
+    print(tag, text)
 
   def inject_input(self, user_input):
     if self.llm_output != "":
@@ -133,20 +140,19 @@ class Dialogflow:
       n += 1
       return self.llm_response(prompt, n=n)
 
-  def chat(self, lock=False):
-      if self.taking_input():
-        # if user give an input
-        if self.user_input in ["Exit", "Bye", "exit", "bye"]:
+  def chat(self, user_input, lock=False):
+        if user_input in ["Exit", "Bye", "Clear", "exit", "bye", "clear"]:
           # Exit conditions
-          self.print_output("Shutting Down")
-          return "Shutting Down"
+          self.reset()
+          return {"service_intent":"", "location": ""}
         if lock:
-          self.user_input = self.inject_input(self.user_input)
+          user_input = self.inject_input(user_input)
+          self.user_input = user_input
 
         # generating output using LLM LOOP
         ## maintain a chat history for better conversation flow
         self.History['chat1'] = self.History['chat2']
-        input_prompt = self.prompt_template.format(user_input=self.user_input, intents=self.services)
+        input_prompt = self.prompt_template.format(user_input=user_input, intents=self.services)
         self.History['chat2'] =  input_prompt
         if self.History['chat1'] is not None:
             input_prompt = "<|end_of_turn|>".join([self.History['chat1'], input_prompt])
@@ -160,28 +166,33 @@ class Dialogflow:
         # checking for missing keys
         if service == "Other" and loc == "Other":
           midman = f"To continue, you need to pick a service from {self.services}, also need to mention a location."
+          self.followup(midman)
+
         elif service == "Other" and loc != "Other":
           # Service available
           midman = f"can you please specify choose a Service from {self.services}, for the given Location: `{loc}`?"
+          self.followup(midman)
+
         elif service != "Other" and loc == "Other":
           # Location available
           midman = f"what Location you are looking for the given Service: `{service}`?"
+          self.followup(midman)
         else:
           # both are available
           midman = ""
-          self.print_output(raw_output)
-          return processed_output
-
-        return self.followup(midman)
-      else:
-        # if user dont give an input repeat the process till get one
-        return self.chat()
+          self.lock = False
+        return raw_output
 
   def followup(self, midman_query):
       # if the user dont provide any of the required keys, do a followup questioning conversation
-      self.print_output(midman_query)
-      processed_output = self.chat(lock=True)
-      return processed_output
+      self.print_output("BOT  *: ", midman_query)
+      self.lock = True
+  
+  def run(self):
+    response = self.taking_input()
+    if self.llm_output.service_intent != "Other" and self.llm_output.location != "Other":
+        return self.llm_output
+    return self.run()
   
 
 # SETTING GLOBAL VARIABLES
@@ -238,6 +249,6 @@ if __name__=="__main__":
     # creating object of LLM inference class
     llm = OpenchatLLM(model=model, tokenizer=tokenizer, device=device)
     # start the conversation flow
-    chatbot = Dialogflow(llm=llm, prompt_template=main_prompt, parser=output_parser, n=10, services=services)
-    chat_history = chatbot.chat()
+    chatbot = DialogflowCli(llm=llm, prompt_template=main_prompt, parser=output_parser, n=10, services=services)
+    chat_history = chatbot.run()
     print("PROCESSED OUTPUT:", chat_history.json())
